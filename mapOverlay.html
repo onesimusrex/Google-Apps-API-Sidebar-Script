@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <style>
+    .ten {
+      <!--background-color: black;-->
+      width:100%;
+    }
+    .deClick {
+      width: 75px;
+      height: 75px;
+      padding: 0px 4px 0px;
+      border-radius: 7px;
+    }
+    .clicked {
+      width: 100px;
+      height: 100px;
+      padding: 0px 4px 0px;
+      border-radius: 7px;      
+    }
+    .profileOutside {
+      display: inline;
+      font-size: 12px;
+      font-family: sans-serif;
+      font-style: bold;
+      max-width: 75px;
+    }
+    <!--.profileInside {
+      display: block;
+    }-->
+    .cells {
+      width: 75px;
+      text-align: center;
+    }
+    #heads {
+      font-weight: bold;
+    }
+    </style>
+  </head>
+  <body>
+  <script
+  src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+  </script>
+  <div class="ten"></div>
+  
+  <script>
+    function onSuccess(store) {
+      var store = store;
+      //store.dataStore is now indexed to the position of the images
+      //$('.ten').append(store.dataStore[0].imageLnk);
+      
+      for (i=0;i<store.dataStore.length; ++i){
+        image = $('.ten').append('<table class="profileOutside"><tr><td class="cells"><img id="worker'+i+'"class="deClick"src="'
+        +store.dataStore[i].imageLnk+'"></td></tr><tr><td id="heads'+i+'" class="cells">'+store.dataStore[i].name+'</td></tr></tr><tr><td class="cells">'
+        +store.dataStore[i].location+'</td></tr><tr><td class="cells">'+store.dataStore[i].misc+'</td></tr></table>');
+      };
+    };
+    
+   /* function selectPic() {
+      $(".deClick").click(function(){
+          var class = $(this).css('height');
+          if (class > 75px){
+            $(this).animate({
+              height: "75px",
+              width: '75px'
+            });
+    };
+
+          }
+          else {
+            $(this).animate({
+              height: "100px",
+              width: '100px'
+            });
+          }
+        });          
+          
+          /*animate({
+            height: "100px",
+            width: '100px'
+          });
+          $(this).attr('class','clicked');*/
+          
+
+
+        /*$(".deClick").mouseleave(function(){
+          $(this).animate({
+            height: "75px",
+            width: '75px'
+          });
+        });*/
+        
+        //$('.ten').append(store.dataStore[i].imageLnk);  <div>'+store.dataStore[i].name+'</div>  <div class="profileContain">  </div>
+      
+     
+
+    google.script.run.withSuccessHandler(onSuccess)
+      .loadSheet();
+    //pen = store.getElement().issue;
+    //for (i = 1; i < 5; ++i){
+    //$('.ten').append('<span>pen </span>');
+    //}
+    //$('.ten').css("background-color", "blue");
+  </script>
+  
+  </body>
+
+</html>
+
+
